@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 4 CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background-color: #f0f8ff;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .dashboard-header {
+      background: linear-gradient(135deg,rgb(230, 103, 177),rgb(11, 11, 12));
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+    }
+
+    .dashboard-header h1 {
+      font-weight: 600;
+      font-size: 2.8rem;
+    }
+
+    .dashboard-header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .card-box {
+      border: 2px solid black; /* Black border for the box */
+      border-radius: 15px;
+      background-color: #f8d7b9; /* Pale peach background */
+      color: #6a4f2f; /* Brownish color text */
+      padding: 25px 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+
+    .card-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-box h5 {
+      font-weight: 600;
+      margin-top: 15px;
+    }
+
+    .btn-custom {
+      margin-top: 20px;
+      border-radius: 25px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-header h1 {
+        font-size: 2rem;
+      }
+      .card-box {
+        margin-bottom: 20px;
+      }
+    }
+
+    /* To make sure that the boxes align in center */
+    .row {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .col-md-4 {
+      max-width: 320px;
+      margin: 10px;
+    }
+
+    /* Center the two boxes in the second row */
+    .row.second-row {
+      justify-content: center;
+    }
+
+    /* Add 3 boxes in the first row */
+    .row.first-row .col-md-4 {
+      margin-bottom: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  {% include "library/navbaradmin.html" %}
+
+  <div class="dashboard-header">
+    <h1>Hello {{ user.first_name }}!</h1>
+    <p>You have full admin privileges. Manage books, students, and more.</p>
+  </div>
+
+  <div class="container my-5">
+    <div class="row first-row">
+
+      <!-- First Row: 3 boxes -->
+      <div class="col-md-4">
+        <div class="card-box">
+          <h2>📘</h2>
+          <h5>Add Book</h5>
+          <p>Add new books to the library system.</p>
+          <a href="addbook" class="btn btn-primary btn-custom">Add Book</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card-box">
+          <h2>📚</h2>
+          <h5>View Books</h5>
+          <p>See all available books in the library.</p>
+          <a href="viewbook" class="btn btn-primary btn-custom">View Books</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card-box">
+          <h2>📤</h2>
+          <h5>Issue Book</h5>
+          <p>Issue books to students and manage lending.</p>
+          <a href="issuebook" class="btn btn-primary btn-custom">Issue Book</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Second Row: 2 boxes centered -->
+    <div class="row second-row">
+
+      <div class="col-md-4">
+        <div class="card-box">
+          <h2>🗂️</h2>
+          <h5>Issued Books</h5>
+          <p>View and manage all issued books.</p>
+          <a href="viewissuedbook" class="btn btn-primary btn-custom">Issued Books</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card-box">
+          <h2>👨‍🎓</h2>
+          <h5>View Students</h5>
+          <p>Access and manage student profiles.</p>
+          <a href="viewstudent" class="btn btn-primary btn-custom">View Students</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  {% include "library/footer.html" %}
+
+</body>
+</html>

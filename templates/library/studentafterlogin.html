@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | Library Management System</title>
+
+  <!-- Bootstrap 4 CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background-color:rgb(28, 29, 31);
+      font-family: 'Segoe UI', sans-serif;
+      color:rgb(22, 16, 16);
+      margin: 0;
+      padding: 0;
+    }
+
+    .jumbotron {
+      background-color: #1f1f1f;
+      padding: 3rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 255, 100, 0.08);
+      text-align: center;
+    }
+
+    .jumbotron h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color:rgb(14, 4, 4);
+    }
+
+    .jumbotron .lead {
+      font-size: 1.25rem;
+      color:rgb(15, 15, 15);
+    }
+
+    .jumbotron hr {
+      border-top: 1px solid #444;
+      margin: 2rem 0;
+    }
+
+    .options {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .options a {
+      background-color:rgb(35, 6, 88);
+      color: #fff;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+    }
+
+    .options a:hover {
+      background-color:rgb(197, 194, 204);
+      transform: scale(1.05);
+      text-decoration: none;
+    }
+
+    .footer {
+      background-color: #1f1f1f;
+      color: #888;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+    }
+
+    .footer a {
+      color: #28a745;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .jumbotron h1 {
+        font-size: 2rem;
+      }
+
+      .jumbotron .lead {
+        font-size: 1rem;
+      }
+
+      .options a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  {% include "library/navbarstudent.html" %}
+
+  <div class="container my-5">
+    <div class="jumbotron">
+      <h1>Hello, {{ user.first_name }}!</h1>
+      <p class="lead">Welcome to your student dashboard. View your issued books, track fines, and explore more.</p>
+      <hr>
+
+      <div class="options">
+        <a href="viewissuedbookbystudent">📚 View Issued Books</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Library Management System | NBKRIST
+  </div>
+
+  {% include "library/footer.html" %}
+
+</body>
+</html>

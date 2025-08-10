@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Book Added Successfully</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+      body {
+        background-color: #f4f7fa;
+        font-family: 'Roboto', sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      .success-message {
+        background-color:rgb(228, 241, 247);
+        color:rgb(11, 12, 12);
+        font-size: 1.6rem;
+        font-weight: 500;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 40px;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+      }
+
+      .options {
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      .options a {
+        font-size: 1.1rem;
+        padding: 12px 30px;
+        margin: 10px;
+        border-radius: 50px;
+        background-color: #007bff;
+        color: white;
+        transition: 0.3s ease;
+        display: inline-block;
+        min-width: 220px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        text-decoration: none;
+      }
+
+      .options a:hover {
+        background-color: #0056b3;
+        text-decoration: none;
+      }
+
+      h2.title {
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #343a40;
+      }
+
+      @media (max-width: 576px) {
+        .success-message {
+          font-size: 1.3rem;
+          padding: 15px;
+        }
+
+        .options a {
+          font-size: 1rem;
+          padding: 10px 20px;
+          min-width: 180px;
+        }
+
+        h2.title {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+
+    <div class="container">
+      <h2 class="title">Book Added Successfully!</h2>
+      <div class="success-message">
+        The book has been successfully added to the library.
+      </div>
+
+      <div class="options">
+        <a href="addbook" role="button">Add More Book</a>
+        <a href="viewbook" role="button">View Book in Library</a>
+      </div>
+    </div>
+
+    {% include "library/footer.html" %}
+  </body>
+</html>

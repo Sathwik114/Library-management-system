@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>LMS Django</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <style type="text/css">
+      body {
+        color: #aa082e;
+        background-color: #b6bde7 !important;
+        font-family: 'Roboto', sans-serif;
+      }
+      .form-control {
+        border-color: #eee;
+        min-height: 41px;
+        box-shadow: none !important;
+      }
+      .form-control:focus {
+        border-color: #5cd3b4;
+      }
+      .form-control, .btn {
+        border-radius: 3px;
+      }
+      .signup-form {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 30px 20px;
+      }
+      .signup-form h2 {
+        color: #333;
+        margin: 0 0 30px 0;
+        display: inline-block;
+        padding: 0 30px 10px 0;
+        border-bottom: 3px solid #ffffff;
+      }
+      .book-entry {
+        background: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+      }
+      .btn-group {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    <br><br>
+    <div class="signup-form">
+      <center><h2>ADD BOOKS TO LIBRARY</h2></center>
+      <form method="POST" id="book-form">
+        {% csrf_token %}
+        <div id="book-forms-container">
+          <!-- Initial Book Form -->
+          <div class="book-entry">
+            <div class="form-group">
+              <label>Book Name</label>
+              <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Edition</label>
+              <input type="text" name="edition" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>ISBN</label>
+              <input type="text" name="isbn" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>ACC_NUMBER</label>
+              <input type="text" name="number" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Rack_NO</label>
+              <input type="text" name="rack" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>COUNT(Nof_Books)</label>
+              <input type="number" name="t_book" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Author</label>
+              <input type="text" name="author" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select name="category" class="form-control" required>
+                <option value="">Select</option>
+                <option value="education">Education</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="comics">Comics</option>
+                <option value="biography">Biography</option>
+                <option value="history">History</option>
+                <option value="novel">Novel</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="thriller">Thriller</option>
+                <option value="romance">Romance</option>
+                <option value="scifi">Sci-Fi</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-warning" id="add-more">Add More</button>
+          <button type="submit" class="btn btn-success">Save All</button>
+        </div>
+      </form>
+      <div class="text-center mt-3">View Available Books in Library <a href="{% url 'viewbook' %}">Click here</a></div>
+    </div>
+    {% include "library/footer.html" %}
+
+    <script>
+      $(document).ready(function () {
+        $("#add-more").click(function () {
+          let newBookForm = $(".book-entry").first().clone();
+          newBookForm.find("input, select").val("");  // Clear input fields
+          $("#book-forms-container").append(newBookForm);
+        });
+      });
+    </script>
+  </body>
+</html>

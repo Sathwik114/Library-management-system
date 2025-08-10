@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Issued Books</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 15px;
+    }
+
+    h3 {
+      font-size: 30px;
+      text-align: center;
+      background-color: #333;
+      padding: 20px;
+      color: #fff;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .search-bar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      margin-bottom: 20px;
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .search-bar input {
+      background-color: #2a2a2a;
+      color: #fff;
+      border: none;
+      padding: 12px 10px;
+      font-size: 13px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .search-bar input::placeholder {
+      color: #ccc;
+    }
+
+    .search-bar input:focus {
+      background-color: #3a3a3a;
+      transform: scale(1.02);
+      box-shadow: 0 0 8px #2196f3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    table th, table td {
+      padding: 15px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 14px;
+      border: 1px solid #444;
+      color: #ffffff;
+    }
+
+    table th {
+      background-color: #333;
+      font-weight: bold;
+    }
+
+    table tbody tr:nth-child(even) {
+      background-color: #2c2c2c;
+    }
+
+    table tbody tr:nth-child(odd) {
+      background-color: #212121;
+    }
+
+    table tbody tr:hover {
+      background-color: #444;
+      cursor: pointer;
+      transform: scale(1.02);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .no-books {
+      text-align: center;
+      font-size: 24px;
+      color: #f44336;
+      margin-top: 50px;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 992px) {
+      .search-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .search-bar {
+        grid-template-columns: 1fr;
+      }
+
+      h3 {
+        font-size: 22px;
+      }
+
+      table th, table td {
+        font-size: 12px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  {% include "library/navbaradmin.html" %}
+
+  <div class="container">
+    <h3>Issued Books to Students</h3>
+
+    <div class="search-bar">
+      <input type="text" id="searchStudentName" placeholder="Search by Student Name" onkeyup="filterTable()">
+      <input type="text" id="searchEnrollment" placeholder="Search by Enrollment" onkeyup="filterTable()">
+      <input type="text" id="searchBookName" placeholder="Search by Book Name" onkeyup="filterTable()">
+      <input type="text" id="searchAuthor" placeholder="Search by Author" onkeyup="filterTable()">
+      <input type="text" id="searchIssued" placeholder="Search by Issued" onkeyup="filterTable()">
+      <input type="text" id="searchExpiryDate" placeholder="Search by Expiry Date" onkeyup="filterTable()">
+      <input type="text" id="searchFine" placeholder="Search by Fine" onkeyup="filterTable()">
+    </div>
+
+    {% if li %}
+      <table>
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Enrollment</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Issued</th>
+            <th>Expiry Date</th>
+            <th>Fine</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in li %}
+            <tr>
+              <td>{{ t.0 }}</td>
+              <td>{{ t.1 }}</td>
+              <td>{{ t.2 }}</td>
+              <td>{{ t.3 }}</td>
+              <td>{{ t.4 }}</td>
+              <td>{{ t.5 }}</td>
+              <td>{{ t.6 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="no-books">
+        <h1>No books issued</h1>
+      </div>
+    {% endif %}
+  </div>
+
+  <footer>
+    {% include "library/footer.html" %}
+  </footer>
+
+  <script>
+    function filterTable() {
+      var studentName = document.getElementById("searchStudentName").value.toLowerCase();
+      var enrollment = document.getElementById("searchEnrollment").value.toLowerCase();
+      var bookName = document.getElementById("searchBookName").value.toLowerCase();
+      var author = document.getElementById("searchAuthor").value.toLowerCase();
+      var issued = document.getElementById("searchIssued").value.toLowerCase();
+      var expiryDate = document.getElementById("searchExpiryDate").value.toLowerCase();
+      var fine = document.getElementById("searchFine").value.toLowerCase();
+
+      var table = document.querySelector("table tbody");
+      var rows = table.getElementsByTagName("tr");
+
+      for (var i = 0; i < rows.length; i++) {
+        var columns = rows[i].getElementsByTagName("td");
+        var show = true;
+
+        if (columns[0].textContent.toLowerCase().indexOf(studentName) === -1) show = false;
+        if (columns[1].textContent.toLowerCase().indexOf(enrollment) === -1) show = false;
+        if (columns[2].textContent.toLowerCase().indexOf(bookName) === -1) show = false;
+        if (columns[3].textContent.toLowerCase().indexOf(author) === -1) show = false;
+        if (columns[4].textContent.toLowerCase().indexOf(issued) === -1) show = false;
+        if (columns[5].textContent.toLowerCase().indexOf(expiryDate) === -1) show = false;
+        if (columns[6].textContent.toLowerCase().indexOf(fine) === -1) show = false;
+
+        rows[i].style.display = show ? "" : "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

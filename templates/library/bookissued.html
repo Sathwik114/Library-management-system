@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Book Issued Successfully</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+      body {
+        background: linear-gradient(to right, #121212, #1f1f1f);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+      }
+
+      .card-success {
+        max-width: 600px;
+        margin: 80px auto;
+        padding: 40px 30px;
+        background-color: #2a2a2a;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        text-align: center;
+      }
+
+      .card-success h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #28a745;
+        margin-bottom: 30px;
+      }
+
+      .card-success .btn-custom {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-size: 1rem;
+        margin: 10px;
+        transition: 0.3s ease;
+        width: 220px;
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+      }
+
+      .card-success .btn-custom:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+
+      @media (max-width: 576px) {
+        .card-success {
+          margin: 40px 15px;
+          padding: 30px 20px;
+        }
+
+        .card-success h2 {
+          font-size: 1.5rem;
+        }
+
+        .card-success .btn-custom {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+
+    <div class="card-success">
+      <h2>✅ Book Issued Successfully!</h2>
+
+      <a href="issuebook" class="btn btn-custom" role="button" aria-pressed="true">Issue More Book</a>
+      <a href="viewissuedbook" class="btn btn-custom" role="button" aria-pressed="true">View Issued Books</a>
+    </div>
+
+    {% include "library/footer.html" %}
+  </body>
+</html>

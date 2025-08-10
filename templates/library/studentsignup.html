@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>LMS Django - Student Signup</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <style>
+    body {
+      background: linear-gradient(to right, #1e2d3b, #1c3c50);
+      font-family: 'Roboto', sans-serif;
+      color: #ffffff;
+    }
+    .form-control {
+      border: none;
+      background: #f7f7f7;
+      color: #333;
+      min-height: 45px;
+      border-radius: 25px;
+      padding: 10px 20px;
+      box-shadow: none !important;
+    }
+    .form-control:focus {
+      background: #fff;
+      border-color: #1e2d3b;
+    }
+    .signup-form {
+      width: 100%;
+      max-width: 450px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .signup-form h2 {
+      color:rgb(236, 161, 192);
+      margin-bottom: 30px;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    .signup-form .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .signup-form .form-group label {
+      width: 35%; /* Fixed width for the label */
+      font-size: 14px;
+      color: #ffffff;
+    }
+    .signup-form .form-group .form-control {
+      width: 65%; /* Fixed width for the input box */
+    }
+    .signup-form .btn {
+      background:rgb(29, 12, 128);
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      padding: 12px;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .signup-form .btn:hover {
+      background: #218838;
+    }
+    .signup-form .btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    .signup-form a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 14px;
+      text-align: center;
+    }
+    .signup-form a:hover {
+      text-decoration: underline;
+    }
+    .alert {
+      background-color: #28a745;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 576px) {
+      .signup-form {
+        padding: 20px;
+      }
+      .signup-form h2 {
+        font-size: 1.6rem;
+      }
+      .signup-form .form-group label,
+      .signup-form .form-group .form-control {
+        width: 100%; /* Full width on mobile */
+      }
+    }
+
+    @media (min-width: 576px) and (max-width: 768px) {
+      .signup-form {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  {% include "library/navbar.html" %}
+  
+  <!-- Alert Message Outside the Box -->
+  
+
+  <div class="signup-form">
+    <form method="post">
+      <h2>Student Signup</h2>
+
+      {% csrf_token %}
+      
+      <!-- Iterate through fields in form1 -->
+      {% for field in form1 %}
+        <div class="form-group">
+          <label>{{ field.label_tag }}</label>
+          {% if field.name == 'password' %}
+            <input type="password" name="{{ field.name }}" class="form-control" id="{{ field.id_for_label }}" />
+          {% else %}
+            {{ field }}
+          {% endif %}
+        </div>
+      {% endfor %}
+      
+      <!-- Iterate through fields in form2 -->
+      {% for field in form2 %}
+        <div class="form-group">
+          <label>{{ field.label_tag }}</label>
+          {% if field.name == 'password' %}
+            <input type="password" name="{{ field.name }}" class="form-control" id="{{ field.id_for_label }}" />
+          {% else %}
+            {{ field }}
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <div class="form-group">
+        <button type="submit" class="btn">Sign Up</button>
+      </div>
+    </form>
+
+    <div class="text-center">
+      <p>Already have an account? <a href="studentlogin">Login here</a></p>
+    </div>
+  </div>
+
+  {% include "library/footer.html" %}
+</body>
+</html>

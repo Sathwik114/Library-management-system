@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin - Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+      /* Global Background Color */
+      body {
+        background-color: #1e2d3b; /* Darker blue color */
+        color: white;
+      }
+
+      /* Jumbotron Styling */
+      .jumbotron {
+        background-color: #1e2d3b; /* Same color as body */
+        color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 50px 30px;
+        text-align: center;
+      }
+
+      .jumbotron h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .jumbotron p {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+        color: #d1d1d1;
+      }
+
+      /* Button Styling */
+      .btn-custom {
+        background-color: #007bff;
+        color: white;
+        font-weight: 600;
+        padding: 15px 35px;
+        border-radius: 25px;
+        font-size: 1.2rem;
+        margin: 10px;
+        transition: background-color 0.3s;
+      }
+
+      .btn-custom:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+
+      .btn-custom:focus {
+        box-shadow: none;
+      }
+
+      /* Button Container Styling */
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
+
+      .button-container a {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      /* Responsive layout for button container */
+      @media (min-width: 576px) {
+        .button-container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .button-container a {
+          width: 45%;
+        }
+      }
+
+      /* Additional Container Styling */
+      .container {
+        margin-top: 50px;
+      }
+
+      /* Footer Styling */
+      footer {
+        background-color: #1e2d3b; /* Same color as body */
+        padding: 20px 0;
+        text-align: center;
+        color: white; /* White text */
+        margin-top: 50px;
+      }
+
+      footer p {
+        font-size: 1rem;
+      }
+
+      /* Responsive font sizes */
+      @media (max-width: 576px) {
+        .jumbotron h1 {
+          font-size: 2.2rem;
+        }
+
+        .jumbotron p {
+          font-size: 1rem;
+        }
+
+        .btn-custom {
+          font-size: 1rem;
+          padding: 12px 25px;
+        }
+      }
+
+      @media (min-width: 576px) and (max-width: 768px) {
+        .jumbotron h1 {
+          font-size: 2.5rem;
+        }
+
+        .btn-custom {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include "library/navbar.html" %}
+    
+    <div class="container">
+      <!-- Jumbotron Section -->
+      <div class="jumbotron">
+        <h1 class="display-4">Welcome, Admin</h1>
+        <p class="lead">Welcome to the Online Library Management System where you can manage books, students, and more.</p>
+        <hr class="my-4">
+        <p class="lead">
+          <a class="btn btn-custom" href="adminsignup" role="button">Sign Up</a>
+          <a class="btn btn-custom" href="adminlogin" role="button">Login</a>
+        </p>
+      </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; 2025 Library Management System | Designed and Developed by NBKRIST</p>
+    </footer>
+  </body>
+</html>

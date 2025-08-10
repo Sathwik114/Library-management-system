@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Issue Book | Library Management System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <style>
+    body {
+      background-color: #121212; /* Dark background for the entire webpage */
+      color: #e0e0e0; /* Light color for text */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #1d1d1d;
+    }
+
+    .navbar a {
+      color: #ffffff;
+    }
+
+    .navbar a:hover {
+      color: #007bff;
+    }
+
+    .issue-container {
+      max-width: 600px;
+      margin: 60px auto;
+      background-color: #f1f1f1; /* Light background for the form container */
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333333; /* Dark text for the title */
+      font-weight: 600;
+    }
+
+    .form-label {
+      color: #333333; /* Dark color for form labels */
+      font-weight: 500;
+    }
+
+    .form-control {
+      background-color: #ffffff; /* Light background for form fields */
+      border: 1px solid #cccccc;
+      color: #333333; /* Dark text color for form fields */
+      border-radius: 6px;
+    }
+
+    .form-control:focus {
+      background-color: #ffffff;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .btn-issue {
+      width: 100%;
+      background-color: #007bff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+    }
+	.btn-issue h4{
+		color:black;
+	  }
+
+    .btn-issue:hover {
+      background-color:rgb(135, 168, 201); /* Darker blue on hover */
+    }
+
+    .footer-link {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 0.95rem;
+    }
+
+    .footer-link a {
+      color:rgb(10, 14, 17);
+      text-decoration: none;
+    }
+
+    .footer-link a:hover {
+      color:rgb(6, 7, 7);
+      text-decoration: none;
+    }
+	.footer-link button:hover {
+		color:rgb(34, 172, 172);
+		text-decoration: none;
+	  }
+
+    /* Responsive Styles */
+    @media (max-width: 576px) {
+      .issue-container {
+        padding: 30px;
+        margin: 20px 15px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .btn-issue {
+        font-size: 1rem;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  {% include "library/navbaradmin.html" %}
+
+  <div class="issue-container">
+    <h2>Issue Book to Student</h2><br><br>
+    <form method="post" class="form-horizontal">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="form-group">
+          <label class="form-label">{{ field.label_tag }}</label>
+          {{ field }}
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-issue"><h4>Issue Book</h4></button>
+    </form>
+    <div class="footer-link">
+	  <button class="btn btn-issue"><h4><a href="viewissuedbook">View issued books</a></h4></button>
+    </div>
+  </div>
+
+  {% include "library/footer.html" %}
+</body>
+</html>
